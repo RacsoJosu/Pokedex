@@ -5,46 +5,52 @@ import Searcher from './components/Searcher/Searcher'
 import Title from './components/Title'
 import WrapperSeach from './components/WrapperSearch/WrapperSeach'
 import CardPokemon from './components/CardPokemon/CardPokemon'
-import { useState } from 'react'
 import Panel from './components/PanelRigth/Panel'
 import Header from './components/Header/Header'
-const data = [
-  {
-  name:"Pikachu",
-  icon:"icono",
-  img:"",
-  type:"Acuatico"
-  },
-  {
-  name:"Bulbasur",
-  icon:"icono",
-  img:"",
-  type:"planta"
-  },
-  {
-  name:"Nombre",
-  icon:"icono",
-  img:"",
-  type:"Fuego"
-  }
-  ,
-  {
-  name:"Nombre",
-  icon:"icono",
-  img:"",
-  type:"Fuego"
-  }
-]
+import {  getPokemons } from './api'
+import { getPokemonsWithDetails, setLoading } from './actions'
+import { useEffect, useState } from 'react'
+import {  useDispatch, useSelector,  } from 'react-redux'
 function App() {
+  const pokemons = useSelector(state => state.get("pokemons")).toJS()
+  const loading = useSelector(state => state.get("loading"))
+  const dispatch = useDispatch()
+  
+  const [selected,setSelected ] = useState(0)
   const [isOpen, setIsOpen] = useState(false);
   const [searchValue, setSearchValue] = useState("");
-  const searchData = data.filter((pokemon)=> pokemon.name.toLocaleLowerCase().includes(searchValue.toLowerCase()) || pokemon.type.toLocaleLowerCase().includes(searchValue.toLowerCase()))
+  
 
-  const onSearch = ()=> {return }
+  
+
+  const searchData =  pokemons.filter((pokemon)=> pokemon.name.toLocaleLowerCase().includes(searchValue.toLowerCase()))
+  
+  useEffect(()=>{
+    const fetchPokemons = async ()=> {
+      dispatch(setLoading(true))
+      
+     
+    
+      const data = await getPokemons()
+    
+      dispatch(getPokemonsWithDetails(data)
+      )
+      dispatch(setLoading(false))
+      
+        
+      
+    }
+    
+    fetchPokemons()
+  
+    
+  },[])
+  
 
   return (
     <>
-       {isOpen && <Panel isOpen={isOpen} onClose={setIsOpen}/>}
+
+       {isOpen && <Panel pokemon={selected} isOpen={isOpen} onClose={setIsOpen}/>}
       <Header>
           <Title/>
 
@@ -52,19 +58,29 @@ function App() {
             <Searcher value={searchValue} onSearch={setSearchValue}/>
           </WrapperSeach>
       </Header>
-      
-        <Pokemons>
-          {searchData.map((pokemon, index)=><CardPokemon data={pokemon} key={index} onOpen={setIsOpen}/>
-          )
+      { loading ? <div className="mx-auto flex  flex-row gap-2 h-[500px] justify-center content-center items-center">
+              <div className='mx-auto flex flex-row gap-2 h-[100px] '>
+                <div className="w-8 h-8 rounded-full bg-blue-700 animate-bounce"></div>
+                <div className="w-8 h-8 rounded-full bg-blue-700 animate-bounce [animation-delay:-.3s]"></div>
+                <div className="w-8 h-8 rounded-full bg-blue-700 animate-bounce [animation-delay:-.5s]"></div>
 
-          }
-          
-          
-        </Pokemons>
+              </div>
+            </div>:
+      <Pokemons>
+        
+        {searchData.map((pokemon)=><CardPokemon pokemonId={pokemon.id} isFavorite={pokemon.favorite} onSelected = {setSelected} name={pokemon?.name} image={pokemon?.sprites?.front_default} 
+        types={pokemon?.types}  key={pokemon.name} onOpen={setIsOpen}/>
+        )
+
+        }
+        
+        
+      </Pokemons>
+      }
   
      
     </>
   )
 }
 
-export default App
+export default App;

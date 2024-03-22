@@ -1,7 +1,7 @@
 import { createPortal } from "react-dom"
 
-function Panel({onClose, isOpen}) {
-
+function Panel({onClose, isOpen,pokemon}) {
+    console.log(pokemon)
     const handleDoubleClick = (e)=>{
         if (e.target.id === "bg") {
             onClose(false)
@@ -18,7 +18,7 @@ function Panel({onClose, isOpen}) {
             <div onClick={()=>onClose(false)} className=" h-4 cursor-pointer text-right px-4">X</div>
 
 
-            <h1 className=" titleCardMain text-center text-2xl mb-2">Nombre del pokemon</h1>
+            <h1 className=" titleCardMain text-center text-2xl mb-2">{pokemon?.name}</h1>
 
         </section>
         <figure className="w-[400px] h-[350px]">
