@@ -27,6 +27,9 @@
     
 
 }   
+.titleCardMain::first-letter{
+    text-transform: capitalize;
+}
 
 .typePokemon{
     font-weight: 600;
@@ -36,6 +39,7 @@
     font-weight: 400;
 
 }
+
 
 .panel{
     position: fixed;

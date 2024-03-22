@@ -2,7 +2,7 @@
 import { CiStar } from "react-icons/ci";
 import { FaStar } from "react-icons/fa";
 import { useDispatch } from "react-redux";
-import { setFavorite } from "../../actions";
+import { setFavorite } from "../../slices/dataSlice";
 
 function CardPokemon({onOpen,name, pokemonId,image,isFavorite, types, onSelected}) {
   const type = types.map(element => element.type.name).join(", ")
