@@ -20,14 +20,14 @@ function Panel({ onClose, isOpen, indexPokemon, pokemons }) {
       <div
         className={`panel ${
           isOpen ? "open" : ""
-        } bg-white  shadow-2xl   inline-block h-full `}
+        } bg-white  shadow-2xl   inline-block h-full w-auto  max-w-full   overflow-y-auto `}
       >
         <section>
           <div
             onClick={() => onClose(false)}
-            className=" w-[100%] flex flex-row-reverse"
+            className=" w-[100%] flex flex-row-reverse items-center px-4 h-8 "
           >
-            <FaXmark className="cursor-pointer  mt-2 mx-2 h-6 w-6" />
+            <FaXmark className="cursor-pointer   h-6 w-6" />
           </div>
 
           <h1 className=" titleCardMain text-center text-4xl mb-2">

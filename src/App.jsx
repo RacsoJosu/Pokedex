@@ -47,7 +47,7 @@ function App() {
           <Searcher value={searchValue} onSearch={setSearchValue} />
         </WrapperSeach>
       </Header>
-      <div className="flex-1 overflow-y-auto">
+      <div className="flex-1 overflow-y-auto py-8">
         <Outlet context={{ loading, searchData, setSelected, setIsOpen}} />
 
       </div>
