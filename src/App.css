@@ -1,126 +1,99 @@
 @import "tailwindcss";
 /* bg-gradient-to-r from-red-600 via-red-500 to-red-300  */
 /* text-transparent bg-clip-text  */
-.searchBox{
-    transition: font-size  0.1s ease-in;
-    transition: font-weigth  0.3s ease-in
-
+.searchBox {
+  transition: font-size 0.1s ease-in;
+  transition: font-weigth 0.3s ease-in;
 }
 
-.titleMain{
-    background-image: linear-gradient(45deg, #f15b5b, #e44d4d,#b16e6e,#ffffff);
-    background-clip: text;
-    color: transparent;
-    text-align: center;
-    
-
-}   
-
-.titleCardMain{
-    background-image: linear-gradient(45deg, #d11313, #cb0505);
-    background-clip: text;
-    color: transparent;
-    font-weight: 500;
-    
-    
-
-}   
-.titleCardMain::first-letter{
-    text-transform: capitalize;
+.titleMain {
+  background-image: linear-gradient(45deg, #f15b5b, #e44d4d, #b16e6e, #ffffff);
+  background-clip: text;
+  color: transparent;
+  text-align: center;
 }
 
-.typePokemon{
-    font-weight: 600;
-
+.titleCardMain {
+  background-image: linear-gradient(45deg, #d11313, #cb0505);
+  background-clip: text;
+  color: transparent;
+  font-weight: 500;
 }
-.description{
-    font-weight: 400;
-
-}
-
-
-.panel{
-    position: fixed;
-    top: 0;
-    left: -400px ;
-    transition: left 1s ease-in;
-    
-
-    
-}
-.bgPanel{
-    position: fixed;
-    top: 0;
-}
-.panel.open{
-    left: 0;
+.titleCardMain::first-letter {
+  text-transform: capitalize;
 }
 
-.searchBox:hover{
-    font-size: 1.2rem;
-    font-weight:600;
+.typePokemon {
+  font-weight: 600;
+}
+.description {
+  font-weight: 400;
+}
+
+.panel {
   
+  left: -400px;
+  transition: left 1s ease-in;
 }
 
-.searchButton{
-    transition: background-color  0.2s ease-in
+.panel.open {
+  left: 0;
 }
 
-.searchButton:hover{
-    
-    background-color: #2a04b6;
-}
-.cards{
-    width:auto;
-    display: grid;
-    grid-template-columns: repeat(4, 400PX);
-    justify-content: center;
-    align-items:baseline;
-    
-    
- 
-    
+.searchBox:hover {
+  font-size: 1.2rem;
+  font-weight: 600;
 }
 
-@media screen and (min-width: 1440px)  {
-    .cards{
-        width: 1680px;
-        grid-template-columns: repeat(4, 400PX) ;
-    }
-    .searchBox{
-        width: 35%;
-    }
-    
+.searchButton {
+  transition: background-color 0.2s ease-in;
 }
-@media screen and (min-width: 1024px) and (max-width: 1440px)  {
-    .cards{
-        width: auto;
-        grid-template-columns: repeat(3, 400PX) ;
-    }
-    .searchBox{
-        width: 35%;
-    }
-    
-}
-@media screen and (min-width: 768px) and (max-width: 1024px)  {
-    .cards{
-        width: auto;
-        grid-template-columns: repeat(2, 400PX) ;
-    }
-    .searchBox{
-        width: 50%;
-    }
-    
-}
-@media screen and (max-width: 767px)  {
 
-    .cards{
-        width: auto;
+.searchButton:hover {
+  background-color: #2a04b6;
+}
+.cards {
+  width: auto;
+  display: grid;
+  grid-template-columns: repeat(4, 400px);
+  justify-content: center;
+  align-items: baseline;
+}
 
-        grid-template-columns: 400PX ;
-    }
-    .searchBox{
-        width: 75%;
-    }
-    
+@media screen and (min-width: 1440px) {
+  .cards {
+    width: 1680px;
+    grid-template-columns: repeat(4, 400px);
+  }
+  .searchBox {
+    width: 35%;
+  }
+}
+@media screen and (min-width: 1024px) and (max-width: 1440px) {
+  .cards {
+    width: auto;
+    grid-template-columns: repeat(3, 350px);
+  }
+  .searchBox {
+    width: 35%;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .cards {
+    width: auto;
+    grid-template-columns: repeat(2, 350px);
+  }
+  .searchBox {
+    width: 50%;
+  }
+}
+@media screen and (max-width: 767px) {
+  .cards {
+    width: auto;
+
+    grid-template-columns: 400px;
+  }
+  .searchBox {
+    width: 75%;
+  }
 }
