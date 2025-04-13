@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 /* bg-gradient-to-r from-red-600 via-red-500 to-red-300  */
 /* text-transparent bg-clip-text  */
 .searchBox{

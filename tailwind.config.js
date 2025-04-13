@@ -5,6 +5,12 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    variants: {
+       extend: {
+        // ...
+       backgroundOpacity: ['active'],
+      }
+    },
     extend: {},
   },
   plugins: [],
