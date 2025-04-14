@@ -12,17 +12,20 @@ import CardPokemon, {
 } from "./components/CardPokemon/CardPokemon";
 import { useOutletContext } from "react-router-dom";
 import "./App.css";
+import { usePagination } from "./hooks/usePagination";
 
 function ListItems() {
   const {
     loading,
-    currentData,
     setSelected,
     setIsOpen,
+    searchData,
+  } = useOutletContext();
+  const {
+    currentData,
     currentPage,
     totalPages,
-    handlePageChange,
-  } = useOutletContext();
+    handlePageChange,} = usePagination({data: searchData, itemsPerPage:9});
   return (
     <Fragment>
       <div className="w-full flex justify-center items-center px-8 gap-2">
@@ -36,7 +39,7 @@ function ListItems() {
         <span
         className="bg-blue-500 text-white px-4 py-2  hover:bg-blue-800 transition ease-in-out duration-500 rounded"
         >
-          Página {currentPage} de {totalPages}
+          { loading ? <span class="loader size-5 flex justify-center items-center"></span> :<span>Página {currentPage} de {totalPages}</span>}
         </span>
         <button
           className="bg-blue-500 text-white px-4 py-2 cursor-pointer hover:bg-blue-800 transition ease-in-out duration-500 rounded"

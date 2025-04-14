@@ -8,15 +8,6 @@ import Header from "./components/Header/Header";
 import { Outlet } from "react-router-dom";
 import { useData } from "./hooks/useData";
 function App() {
-  // const pokemons = useSelector((state) => state.data.pokemons, shallowEqual);
-  // const loading = useSelector((state) => state.ui.loading);
-  // const dispatch = useDispatch();
-  // const [selected, setSelected] = useState(0);
-  // const [isOpen, setIsOpen] = useState(false);
-  // const [searchValue, setSearchValue] = useState("");
-  // const searchData = pokemons.filter((pokemon) =>
-  //   pokemon.name.toLocaleLowerCase().includes(searchValue.toLowerCase())
-  // );
 
   const {
     pokemons,
@@ -27,10 +18,7 @@ function App() {
     setIsOpen,
     searchValue,
     setSearchValue,
-    currentData,
-    currentPage,
-    totalPages,
-    handlePageChange,
+    searchData
   } = useData();
 
   return (
@@ -53,12 +41,9 @@ function App() {
         <Outlet
           context={{
             loading,
-            currentData,
             setSelected,
             setIsOpen,
-            currentPage,
-            totalPages,
-            handlePageChange,
+            searchData,
           }}
         />
       </div>
