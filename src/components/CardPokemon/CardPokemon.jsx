@@ -49,9 +49,10 @@ export function CardHeader({ children }) {
 }
 
 export function FavoriteButton() {
-  const { isFavorite, onClick } = useContext(CardContext);
+  const { isFavorite, dispatch, id } = useContext(CardContext);
+
   return (
-    <div onClick={onClick} className=" cursor-pointer inline-block p-4">
+    <div onClick={()=> dispatch(setFavorite({pokemonId:id}))} className=" cursor-pointer inline-block p-4">
       {!isFavorite ? (
         <CiStar className="w-6 h-6" />
       ) : (
