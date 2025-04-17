@@ -31,7 +31,7 @@
 }
 
 .panel {
-  
+
   left: -400px;
   transition: left 1s ease-in;
 }
@@ -74,12 +74,13 @@
   100% {
     transform: rotate(360deg);
   }
-} 
+}
 
 @media screen and (min-width: 1440px) {
   .cards {
     width: 1680px;
-    grid-template-columns: repeat(4, 400px);
+
+    grid-template-columns: repeat(3, 400px);
   }
   .searchBox {
     width: 35%;
