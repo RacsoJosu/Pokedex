@@ -78,7 +78,7 @@
 
 @media screen and (min-width: 1440px) {
   .cards {
-    width: 1680px;
+    width: auto;
 
     grid-template-columns: repeat(3, 400px);
   }
